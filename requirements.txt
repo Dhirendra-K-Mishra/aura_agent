@@ -1,0 +1,19 @@
+# --- Core AI & Reasoning ---
+google-generativeai          # Gemini API for the AuraOrchestrator
+python-dotenv                # Environment variable management
+
+# --- Audio & Speech (Optimized for RTX 3050) ---
+faster-whisper               # CTranslate2-backed local STT[cite: 2]
+pyaudio                      # Real-time microphone stream handling
+numpy                        # Numerical processing for audio buffers
+
+# --- Automation & System Control ---
+playwright                   # Headless browser control for WhatsApp[cite: 2]
+pywinauto                    # Native Windows UI automation[cite: 2]
+psutil                       # System-level process priority management[cite: 2]
+
+# --- UI & Frontend ---
+flet                         # Hardware-accelerated Flutter-based UI[cite: 2]
+
+# --- Utilities ---
+pydantic                     # Data validation for structured JSON responses

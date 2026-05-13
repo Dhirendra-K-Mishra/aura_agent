@@ -1,0 +1,44 @@
+content = """# AURA AGENT - LLM CONTEXT RESTORATION DOCUMENT
+
+## 1. PROJECT META
+* **Project Name:** Aura 
+* **Objective:** Build a blazingly fast, production-ready, system-level AI Agent for Windows .
+* **Target Hardware:** Intel Core i5 + NVIDIA RTX 3050 (6GB VRAM) .
+* **Design Philosophy:** Low-overhead, modular, highly secure, stealthy desktop execution .
+* **Architecture Base:** Hybrid Model (Local Execution + Cloud Reasoning) .
+
+## 2. THE TECH STACK
+* **Audio Processing (STT):** `faster-whisper` + CTranslate2 (Local, CUDA) .
+* **Reasoning Engine (LLM):** Gemini API (Strictly structured JSON/Function Calling) [cite: 1].
+* **App Automation:** Playwright Python (Headless Chromium) & `pywinauto` [cite: 1].
+* **UI Framework:** Flet (Flutter for Python) - System tray integrated, hardware-accelerated [cite: 1].
+* **Concurrency:** Python `asyncio` (non-blocking core) [cite: 1].
+
+## 3. OPTIMIZATION MANDATES (Hardware Constraints)
+* **GPU Budgeting:** Limit STT module to ~1GB VRAM. Use `int8_float16` quantization [cite: 1].
+* **VAD Filter:** Only wake up the GPU/Whisper when Voice Activity Detection confirms speech [cite: 1].
+* **Browser Overhead:** Playwright must run with `--disable-extensions` and `--disable-gpu` to offload rendering to CPU and preserve VRAM [cite: 1].
+* **Process Niceness:** Set Python process priority to "Below Normal" via `psutil` [cite: 1].
+* **VRAM TTL:** Unload Whisper model from VRAM to System RAM after 10 minutes of inactivity [cite: 1].
+
+## 4. SECURITY & HUMAN-IN-THE-LOOP (HITL)
+* **Zero-Trust:** No hardcoded API keys. Use `python-dotenv` and Windows Credential Manager [cite: 1].
+* **HITL Policy:** Daily tasks (WhatsApp) are autonomous. High-stakes tasks require manual/biometric approval [cite: 1].
+* **HITL Implementation:** Use Python decorators (`@requires_authorization`) to freeze execution for UI confirmation [cite: 1].
+
+## 5. DIRECTORY STRUCTURE & NAMING CONVENTIONS
+* **Naming Rules:** `snake_case` for files/methods/variables. `PascalCase` for classes [cite: 1].
+```text
+/aura_agent
+├── /core                 # Brain & Security
+│   ├── aura_brain.py     # (AuraOrchestrator)
+│   ├── hitl_manager.py   # (@requires_authorization logic)
+│   └── config.py         # Environment & Credential loading
+├── /skills               # Action Modules (The "Hands")
+│   ├── base_skill.py     # Abstract Base Class
+│   └── whatsapp_skill.py # (WhatsAppController)
+├── /ui                   # Desktop Interface
+│   ├── main_window.py    # (AuraDashboard in Flet)
+│   └── assets/           # Icons and styles
+└── /utils                # Helper scripts
+    └── audio_engine.py   # (AuraTranscriber - Local Whisper)
